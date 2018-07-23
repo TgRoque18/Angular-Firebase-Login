@@ -2,9 +2,9 @@
 
 Esse modelo foi desenvolvido como exemplo de uma aplicação inicial com Angular 4 + Bootstrap 4
 
-## Autor
+## Curso
 
-O autor desse modelo é o Guilherme Ferreira do Guia Código
+O exercício faz parte de um curso sobre como usar Angular com Bootstrap e recursos de autenticação do Firebase.
 
 ## Instalação
 
