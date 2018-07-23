@@ -1,0 +1,113 @@
+<nav class="navbar navbar-light bg-faded">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      Home
+    </a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row justify-content-center">
+      <h1>Sistema de Login com Firebase</h1>
+  </div>
+  <div *ngIf="(user | async)?.email" class="row justify-content-center">
+    <div class="media">
+        <img *ngIf="(user | async)?.photoURL" class="d-flex mr-3" width="60" src="{{ (user | async)?.photoURL }}" alt="(user | async)?.displayName">
+        <img *ngIf="!(user | async)?.photoURL" class="d-flex mr-3" width="60" src="https://querotrabalharsite.files.wordpress.com/2017/01/11.jpg" alt="(user | async)?.displayName">
+        <div class="media-body">
+        <h5 class="mt-0">{{ (user | async)?.displayName }}</h5>
+        <p class="mt-0">{{ (user | async)?.email }}</p>
+        <button (click)="sair()" class="btn btn-info">Sair</button>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <span *ngIf="(user | async)?.email">
+    <div class="row justify-content-center">
+      <button (click)="conectaFacebook()" class="btn btn-block btn-outline-primary">Conectar com Facebook</button>
+    </div>
+    <div class="row justify-content-center">
+      <button (click)="conectaGitHub()" class="btn btn-block btn-outline-warning">Conectar com Github</button>
+    </div>
+    <div class="row justify-content-center">
+      <button (click)="abreConectarLogin = !abreConectarLogin" class="btn btn-block btn-outline-danger">Conectar com E-mail</button>
+    </div>
+    <br>
+    <div *ngIf="abreConectarLogin" class="row justify-content-center">
+      <div class="form-group">
+        <input type="email" class="form-control" [(ngModel)]="email" placeholder="E-mail">
+      </div>    
+      <div class="form-group">
+        <input type="password" class="form-control" [(ngModel)]="senha" placeholder="Senha">
+      </div>
+      <button (click)="conectEmail()" class="btn btn-block btn-outline-info">Entrar</button>
+    </div>  
+  </span>
+
+
+  <span *ngIf="!(user | async)?.email">
+    <div class="row justify-content-center">
+      <button (click)="loginFacebook()" class="btn btn-block btn-outline-primary">Login com Facebook</button>
+    </div>
+    <div class="row justify-content-center">
+      <button (click)="loginGitHub()" class="btn btn-block btn-outline-warning">Login com Github</button>
+    </div>
+    <div class="row justify-content-center">
+      <button (click)="abreEmailLogin = !abreEmailLogin" class="btn btn-block btn-outline-danger">Login com E-mail</button>
+    </div>
+    <div class="row justify-content-center">
+      <button (click)="abreEmailCadastro = !abreEmailCadastro" class="btn btn-block btn-outline-warning">Cadastro</button>
+    </div>
+    <br>
+    <div *ngIf="abreEmailLogin" class="row justify-content-center">
+      <div class="form-group">
+        <input type="email" class="form-control" [(ngModel)]="email" placeholder="E-mail">
+      </div>    
+      <div class="form-group">
+        <input type="password" class="form-control" [(ngModel)]="senha" placeholder="Senha">
+      </div>
+      <button (click)="loginEmail()" class="btn btn-block btn-outline-info">Entrar</button>
+    </div>
+  
+    <div *ngIf="abreEmailCadastro" class="row justify-content-center">
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="nome" placeholder="Nome">
+      </div>    
+      <div class="form-group">
+        <input type="email" class="form-control" [(ngModel)]="email" placeholder="E-mail">
+      </div>    
+      <div class="form-group">
+        <input type="password" class="form-control" [(ngModel)]="senha" placeholder="Senha">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="urlImagem" placeholder="Url da Imagem">
+      </div>
+      <button (click)="cadastroEmail()" class="btn btn-block btn-outline-info">Enviar</button>
+    </div>
+  </span>
+  
+
+</div>
+<!-- <ngb-carousel>
+  <ng-template ngbSlide>
+    <img class="d-block img-fluid" src="https://1.bp.blogspot.com/-Rit9yTysBVE/WID66G5QXpI/AAAAAAAAASU/TaEbBN98RuMoiarMkhRxR3ZObd1wkjg0QCLcB/s1600/banner-programmer.jpeg" alt="Random first slide">
+    <div class="carousel-caption">
+      <h3>Modelo de Slides</h3>
+      <p>Descrição modelo de slides...</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img class="d-block img-fluid" src="http://codeworkhouston.com/images/mac2.png"  alt="Random second slide">
+    <div class="carousel-caption">
+      <h3>Modelo de Slides</h3>
+      <p>Descrição modelo de slides...</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img class="d-block img-fluid" src="https://cdn-images-1.medium.com/max/2000/1*qVE3wRhr3sSczr5EpY4rLw.jpeg" alt="Random third slide">
+    <div class="carousel-caption">
+      <h3>Modelo de Slides</h3>
+      <p>Descrição modelo de slides...</p>
+    </div>
+  </ng-template>
+</ngb-carousel> -->
